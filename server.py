@@ -2,11 +2,10 @@ import sys
 import socket
 import threading, Queue
 
-# from connected_game import game, game2
-# from client_handler import handle, handleTwoPlayer
+from client_handler import handle
 
 if not(len(sys.argv) == 2 or len(sys.argv) == 3):
-    print("Incorrect Arguments")
+    print "Incorrect Arguments"
     sys.exit()
 
 #Handle clients
@@ -16,10 +15,6 @@ global queue
 queue = Queue.Queue()
 global lock
 lock = threading.Lock()
-
-#Handle Two Players
-thread2 = threading.Thread(target = handleTwoPlayer, args = (clients, lock))
-thread2.start()
 
 # Setup Socktet
 sock = socket.socket()
