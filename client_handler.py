@@ -23,7 +23,7 @@ def handle(clients, lock, queue):
         if player1 and player2:
             clients.remove(player1)
             clients.remove(player2)
-            thread_game = threading.Thread(target = game, args = (player1[0], player1[1], player2[0], player2[1], clients, lock))
+            thread_game = threading.Thread(target = game, args = (player1[0], player1[1], player2[0], player2[1], lock))
             thread_game.start()
         else:
             packet = struct.pack('b27s', 27, 'Waiting for another player!')

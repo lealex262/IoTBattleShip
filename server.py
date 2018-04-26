@@ -22,6 +22,8 @@ if (len(sys.argv) == 3):
     host = sys.argv[2]
 else:
     host = socket.gethostname()
+
+print(host)
 port = int(sys.argv[1])
 
 #Bind & Listen
