@@ -24,7 +24,7 @@ port = int(sys.argv[2])
 try:
     sock.connect((host, port))
 except Exception as e:
-    print("Something's wrong with %s:%d. Exception is %s" % (address, port, e))
+    print ("Something's wrong with %s:%d. Exception is %s" % (address, port, e))
     sock.close()
     sys.exit()
 
@@ -67,7 +67,6 @@ while True:
         ##     send_packet = struct.pack('b'+str(len(client_guess))+'s', len(client_guess), client_guess)
             print receive_packet
             message = raw_input()
-            
             sock.send(message.split('/')[0])
 
 # Finished Game
