@@ -65,7 +65,7 @@ while True:
         ##     # input guess word and send the client packet to the server
         ##     client_guess = raw_input()
         ##     send_packet = struct.pack('b'+str(len(client_guess))+'s', len(client_guess), client_guess)
-            print receive_packet
+            print "receive Packet - " + receive_packet
             message = raw_input()
             sock.send(message.split('/')[0])
 
