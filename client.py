@@ -12,7 +12,7 @@ try:
         parity=serial.PARITY_NONE,\
         stopbits=serial.STOPBITS_ONE,\
         bytesize=serial.EIGHTBITS,\
-        timeout=0
+        timeout=None
         )
 except Exception as e:
     print "Serial port failed to connect"
