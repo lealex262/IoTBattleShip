@@ -46,7 +46,7 @@ except Exception as e:
 # receive "ready to start" message
 start_message = sock.recv(1024)
 print start_message
-if 'Waiting' in start_message:
+if 'another' in start_message:
     # player 1
     ser.write('abcd')
 else:
