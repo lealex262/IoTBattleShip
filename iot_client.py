@@ -68,6 +68,8 @@ while True:
         message = ser.read(4)
         print "message = " + message
         sock.send(message)
+        if(message[3] == '1'):
+            break
 
 # Finished Game
 sock.close
