@@ -50,23 +50,35 @@ previous_aimed = list()
 
 def your_turn():
     print "Your Turn"
+
+    # Column
     print "Target Column"
     input = raw_input()
     message = re.sub(r'\D', "", input)
+    # Error Checking
     while len(message) != 1:
         print "Invalid input"
         input = raw_input()
         message = re.sub(r'\D', "", input)
+
+    # Row
     print "Target Row"
     input = raw_input()
     input = re.sub(r'\D', "", input)
+    #Error Checking
     while len(input) != 1:
         print "Invalid input"
         input = raw_input()
         input = re.sub(r'\D', "", input)
+
+    # Save presious shot into history
     message += input.split('/')[0]
     previous_aimed.append(message)
+
+    # Add hit and game state to packet
     message += str(hit) + str(0)
+
+    # Send packet
     sock.send(message)
 
 while True:
@@ -103,6 +115,7 @@ while True:
                 enemy_hit += 1
                 hit = 1
             else:
+                print "Enemy Missed"
                 hit = 0
 
             # Check if you lose
