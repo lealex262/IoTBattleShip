@@ -2,6 +2,7 @@ import sys
 import socket
 import struct
 import serial
+import re
 
 if len(sys.argv) != 3:
     print("Incorrect Arguments")
@@ -49,11 +50,20 @@ previous_aimed = list()
 
 def your_turn():
     print "Your Turn"
-    print "Target Row"
-    input = raw_input()
-    message = input.split('/')[0]
     print "Target Column"
     input = raw_input()
+    message = re.sub(r'\D', "", input)
+    while len(message) != 1:
+        print "Invalid input"
+        input = raw_input()
+        message = re.sub(r'\D', "", input)
+    print "Target Row"
+    input = raw_input()
+    input = re.sub(r'\D', "", input)
+    while len(input) != 1:
+        print "Invalid input"
+        input = raw_input()
+        input = re.sub(r'\D', "", input)
     message += input.split('/')[0]
     previous_aimed.append(message)
     message += str(hit) + str(0)
@@ -96,7 +106,7 @@ while True:
                 hit = 0
 
             # Check if you lose
-            if enemy_hit >= 17:
+            if enemy_hit >= 5:
                 print "Defeat"
                 sock.send("0001")
                 break
