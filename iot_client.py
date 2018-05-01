@@ -7,7 +7,7 @@ import time
 # Connect to mbed
 try:
     ser = serial.Serial(
-        port='COM6',\
+        port='COM5',\
         baudrate=9600,\
         parity=serial.PARITY_NONE,\
         stopbits=serial.STOPBITS_ONE,\
@@ -49,9 +49,11 @@ print start_message
 if 'another' in start_message:
     # player 1
     ser.write('abcd')
+    print 'abcd'
 else:
     #player 2
     ser.write('efgh')
+    print 'efgh'
 
 while True:
     #receive server's packet
@@ -66,6 +68,8 @@ while True:
         message = ser.read(4)
         print "message = " + message
         sock.send(message)
+        if(message[3] == '1'):
+            break
 
 # Finished Game
 sock.close
