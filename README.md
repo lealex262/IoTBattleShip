@@ -1,6 +1,8 @@
 # IoT Battle Ship
 By: Alex Le, Eric Yan, Brandon Donohue, Soham Gadgil
 
+mbed code: https://os.mbed.com/users/bdonohue/notebook/battleship/
+
 # How to run the Game
 python server.py [port]
 or
